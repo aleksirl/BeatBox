@@ -51,6 +51,9 @@ class BeatBox(private val assets: AssetManager) {
         }
         return sounds
     }
+     fun release(){
+        soundPool.release()
+    }
 
     private fun load(sound: Sound){
         val afd: AssetFileDescriptor = assets.openFd(sound.assetsPath)
