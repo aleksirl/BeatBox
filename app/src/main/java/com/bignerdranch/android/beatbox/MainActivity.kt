@@ -22,11 +22,17 @@ class MainActivity : AppCompatActivity() {
 
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        binding.recyclerView.apply {
+        binding.viewModel = SoundViewModel(beatBox)
+        binding.recyclerGridView.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = SoundAdapter(beatBox.sounds)
         }
+
+      /* binding.recyclerView.apply {
+            layoutManager = GridLayoutManager(context, 3)
+            adapter = SoundAdapter(beatBox.sounds)
+        }*/
+
     }
 
     override fun onDestroy() {

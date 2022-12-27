@@ -19,4 +19,21 @@ class SoundViewModel(private val beatBox: BeatBox): BaseObservable() {
     @get:Bindable
     val title: String?
     get() = sound?.name
+
+    @set:Bindable
+    var rate: Int? = 0
+        set(value) {
+            field = value
+            value?.let {
+                BeatBox.soundRate = it/100f
+            }
+
+        }
+    @Bindable
+    var seekBarValue: Int = 50
+        set(value) {
+            field = value
+            rate = value+50
+            notifyPropertyChanged(BR.viewModel)
+        }
 }
